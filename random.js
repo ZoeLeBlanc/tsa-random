@@ -8,32 +8,28 @@ function mouseClick (event) {
 	var clickWindow = window.innerWidth;
 	var clickWindow = clickWindow /2;
 	if (event.clientX < clickWindow) {
-		leftShow();
+		showArrow(leftArrow);
 		console.log("left");
-		setTimeout(leftHide, 1000);
+		setTimeout(function() {
+			hideArrow(leftArrow);
+		}, 1000);
 	}
 	if (event.clientX > clickWindow) {
-		rightShow();
+		showArrow(rightArrow);
 		console.log("right");
-		setTimeout(rightHide, 1000);
+		setTimeout(function() {
+			hideArrow(rightArrow);
+		}, 1000);
 	}
 }
 
 window.addEventListener("click", mouseClick);
 //Determine which image to show
-function leftShow() {
-	leftArrow.classList.remove("hidden");
-	leftArrow.classList.add("show");
+function showArrow(img) {
+	img.classList.remove("hidden");
+	img.classList.add("show");
 }
-function leftHide() {
-	leftArrow.classList.remove("show");
-	leftArrow.classList.add("hidden");
-}
-function rightShow() {
-	rightArrow.classList.remove("hidden");
-	rightArrow.classList.add("show");
-}
-function rightHide() {
-	rightArrow.classList.remove("show");
-	rightArrow.classList.add("hidden");
+function hideArrow(img) {
+	img.classList.remove("show");
+	img.classList.add("hidden");
 }
